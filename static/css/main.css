@@ -782,11 +782,7 @@ footer {
     Header User Actions (Logged-in state)
 ========================================
 */
-.header__user-actions {
-    display: none;
-    align-items: center;
-    gap: 24px;
-}
+
 
 .user-icon, .cart-icon {
     display: block;
@@ -812,16 +808,12 @@ footer {
 ========================================
 */
 
-body:not(.user-logged-in) .header__user-actions {
-    display: none;
-}
+
 body:not(.user-logged-in) .header__auth-buttons {
     display: flex;
 }
 
-body.user-logged-in .header__auth-buttons {
-    display: none;
-}
+
 body.user-logged-in .header__user-actions {
     display: flex;
 }

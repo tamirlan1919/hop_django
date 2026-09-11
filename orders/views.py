@@ -46,3 +46,10 @@ def cart_remove(request, product_id):
     cart.remove(product)
     messages.info(request, f'{product.name} удален из коризны')
     return redirect('orders:cart_detail')
+
+
+def checkout(request):
+    cart = Cart(request)
+    if len(cart) == 0:
+        return redirect('products:list')
+

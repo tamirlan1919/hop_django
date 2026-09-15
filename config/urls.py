@@ -19,13 +19,34 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from config.settings.development import DEBUG
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+from .api_urls import router
+from users.api_views import RegisterAPIView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('products.urls')),
     path('orders/', include('orders.urls')),
     path('users/', include('users.urls')),
+
 ]
+
+api_patterns = [
+    path('', include(router.urls)),
+    path('uses/register/', RegisterAPIView.as_view(), name='register'),
+    path('users/login', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('schema/', SpectacularAPIView.as_view(), name='schema'),
+    # Optional UI:
+    path('docs', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+]
+
+urlpatterns += [path('api/', include(api_patterns))]
 
 if DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

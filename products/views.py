@@ -1,8 +1,7 @@
 from django.db.models import Avg, Q
-from django.views.generic import ListView, DetailView
+from django.views.generic import DetailView, ListView
 
-from .models import Product, Category
-
+from .models import Category, Product
 
 # Create your views here.
 

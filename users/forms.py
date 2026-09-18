@@ -1,10 +1,9 @@
 from django import forms
-from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.password_validation import validate_password
-from .models import Profile
 
 from users.signals import User
+
+from .models import Profile
 
 
 class RegisterForm(forms.Form):

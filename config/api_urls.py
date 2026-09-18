@@ -1,8 +1,7 @@
 from rest_framework.routers import DefaultRouter
 
-import orders
 from orders.api_views import OrderViewSet
-from products.api_views import ProductViewSet, CategoryViewSet
+from products.api_views import CategoryViewSet, ProductViewSet
 
 router = DefaultRouter()
 

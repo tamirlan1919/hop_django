@@ -3,8 +3,8 @@ from django.core.mail import send_mail
 from django.db import transaction
 
 from products.models import Product
-from .cart import Cart
-from .models import OrderItem, Order
+
+from .models import Order, OrderItem
 
 
 class OutOfStock(Exception):
